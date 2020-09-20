@@ -1,0 +1,38 @@
+***********************
+INSTRUCTIONS
+***********************
+
+STEP 1: First of all, connect mysql database to the website. In order to do so, go to 'db.php' file in 'controller' folder. Inside 'db.php' file, add hostname, username, password and name of your mysql database.
+
+STEP 2: Now upload the website to your host.
+
+STEP 3: Once website is up and running, visit: 'your-domain.com/controller/initialize.php'. Visiting this link will create two tables in the database namely 'users' and 'transactions' if database is configured correctly. It will also create 2 default users, namely: 
+User 1 (Admin) User ID: 1110001 Password: abcdef
+User 2 (User) User ID: 1110002 Password: 123456
+
+(Make sure, you only open initialize.php link once. It is advisable to delete this file after running it once else it will create more tables and users which will break the site's model.)
+
+STEP 4: Now, site is ready to be used. Visit: 'your-domain.com' to access the website. Enter User 1's details to open Admin Panel. Entering User 2's details will redirect to normal banking dashboard.
+
+*********************
+CODE EXPLANATION
+*********************
+
+1. The site has been created using Model-View-Controller (MVC) Approach. 
+  MODEL > The Model consists of two databases: 'User' and Transaction. 'User' database has 5 fields namely - User ID, Password, Balance, Name and User Type. Whereas 'Transaction' database has 6 fields, namely - Date, Sender, Receiver, Amount, Type of Transaction and Balance after making transaction.
+
+  VIEW > The HTML code of every page has been included separately in 'View' folder. 'View' folder only consists of front-end code of index page, dashboard, transfer, withdraw, deposit, transaction, header and footer.
+
+  CONTROLLER > All the PHP code has been included separately in 'Controller' folder. The various controller functions are as follows:
+	1. Login: This file will connect to the 'User' model and check if User ID and Password provided match any of the user. If match found, the user will be redirected to 'Admin Panel' if User Type is 'admin' else will be redirected to 'Dashboard' if user type is 'user'.
+	2. Deposit and Withdraw - These files will connect to the 'User' as well as 'Transaction' model. Balance of the user will be updated in 'User' model depending upon the amount deposited or withdrawn. Then a record will be saved in 'Transaction' model consisting of all the details about the deposit or withdrawal amount.
+	3. Transfer - This file will connect to the 'User' as well as 'Transaction' model. Balance of the sender as well as receiver will be updated in 'User' model depending upon the amount transferred. Then a record will be saved in 'Transaction' model consisting of all the details about the transferred amount.
+	4. Transaction - This file will connect to the 'Transaction' model and will fetch the transactions of the specified User ID depending on the type of transactions requested (depsoit,withdraw,transfer,all).
+	5. Refresh - A quick mysql query which will return the updated current user's balance from the 'User' model and reflect that on 'Dashboard' page.
+	6. Logout - Destroy and unset all the Session variables which will limit the access to the authenticated pages and redirect user to the index.php page.
+	7. Admin (see,add,edit) - Controller functions which could only be accessed with users having user type - 'Admin'. 'See' will simply fetch all records from the 'User' model. 'Add' will add new record in 'User' model with User ID incremented by 1 from previous user. 'Edit' will either edit the details of the user provided on 'edit' page or delete the user if 'delete the customer' button is clicked on 'edit' page.
+
+2. The site has restricted access. Non-logged in users can only access index.php page. If they try to access any other site page, they will be redirected to the index page. Users with user type 'user' can only access dashboard, transfer, withdraw, deposit, transaction pages. Users with user type 'admin' can access all the pages including 'admin/see', 'admin/edit' and 'admin/add'.
+
+Access the online working example of the code on: https://webtricks.website/banking
+For any other query or help, contact: webticas@gmail.com

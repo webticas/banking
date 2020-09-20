@@ -1,0 +1,104 @@
+body {
+    margin: 0 auto;
+    padding: 0 16px;
+    max-width: 80%;
+    font-family: Arial;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    text-align: center;
+    
+}
+
+header, footer {
+    background-color: #14635e;
+    color: #ffffff;
+}
+
+.logo {
+    position: relative;
+    top: 12px;
+}
+
+.main-content {
+    margin-top: 24px;
+    flex-grow: 1;
+    width: 100%;
+}
+
+.back {
+    padding-right: 80%;
+    text-decoration: none;
+}
+
+.options {
+    background: #14635e;
+    color: #ffffff;
+    width: 22%;
+    margin-left: 5%;
+    margin-bottom: 42px;
+    float: left;
+    text-align: center;
+    margin-top: auto;
+    padding: 48px 0;
+    font-size: 24px;
+}
+
+.options2 {
+    height: 112px;
+}
+
+.options2-text {
+    position: relative;
+    top: 40px;
+}
+
+.dashboard {
+    position: relative;
+    left: 8%;
+}
+
+.dashboard-text {
+    position: relative;
+    color: #14635e;
+    font-size: 18px;   
+}
+
+.left-text {
+    padding-right: 80%;  
+    top: 12px;
+}
+
+.right-text {
+    padding-left: 80%; 
+    top: -24px;
+}
+
+.dynamic-text {
+    color: #000000;
+}
+
+.table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+footer {
+    padding: 4px;
+}
+
+.inner-button {
+    position: relative;
+    top: 24px;
+}
